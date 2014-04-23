@@ -1,0 +1,1494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище TSDBModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище TSDBModelContainer">
+          <EntitySet Name="FARM" EntityType="Хранилище TSDBModel.FARM" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HOSTS" EntityType="Хранилище TSDBModel.HOSTS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MONITORING" EntityType="Хранилище TSDBModel.MONITORING" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MONITORING_TYPES" EntityType="Хранилище TSDBModel.MONITORING_TYPES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RESOURCES" EntityType="Хранилище TSDBModel.RESOURCES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RESOURCES_HISTORY" EntityType="Хранилище TSDBModel.RESOURCES_HISTORY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RESOURCES_TYPES" EntityType="Хранилище TSDBModel.RESOURCES_TYPES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RULES" EntityType="Хранилище TSDBModel.RULES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RULES_HISTORY" EntityType="Хранилище TSDBModel.RULES_HISTORY" store:Type="Tables" store:Schema="dbo" store:Name="RULES_HISTORY">
+            <DefiningQuery>SELECT 
+      [RULES_HISTORY].[RULE_ID] AS [RULE_ID], 
+      [RULES_HISTORY].[FARM_ID] AS [FARM_ID], 
+      [RULES_HISTORY].[RULE_NAME] AS [RULE_NAME], 
+      [RULES_HISTORY].[PROBE_NAME] AS [PROBE_NAME], 
+      [RULES_HISTORY].[KEEPALIVE] AS [KEEPALIVE], 
+      [RULES_HISTORY].[PORT] AS [PORT], 
+      [RULES_HISTORY].[HOST_ID] AS [HOST_ID], 
+      [RULES_HISTORY].[S_TIMEOUT] AS [S_TIMEOUT], 
+      [RULES_HISTORY].[LASTCHECKED] AS [LASTCHECKED], 
+      [RULES_HISTORY].[S_STATUS] AS [S_STATUS], 
+      [RULES_HISTORY].[S_STATUS_MESSAGE] AS [S_STATUS_MESSAGE], 
+      [RULES_HISTORY].[DESCRIPTION] AS [DESCRIPTION], 
+      [RULES_HISTORY].[MONITOR] AS [MONITOR], 
+      [RULES_HISTORY].[MONITOR_ALERT_VALUE] AS [MONITOR_ALERT_VALUE], 
+      [RULES_HISTORY].[LASTUPDATED] AS [LASTUPDATED], 
+      [RULES_HISTORY].[USER_ID] AS [USER_ID], 
+      [RULES_HISTORY].[MONITORING_ID] AS [MONITORING_ID], 
+      [RULES_HISTORY].[RULE_HISTORY_ID] AS [RULE_HISTORY_ID]
+      FROM [dbo].[RULES_HISTORY] AS [RULES_HISTORY]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SERVICES" EntityType="Хранилище TSDBModel.SERVICES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SOCKET_STATUS" EntityType="Хранилище TSDBModel.SOCKET_STATUS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TASKS" EntityType="Хранилище TSDBModel.TASKS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TS" EntityType="Хранилище TSDBModel.TS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USERS" EntityType="Хранилище TSDBModel.USERS" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_FARM_ToHOSTS" Association="Хранилище TSDBModel.FK_FARM_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="FARM" EntitySet="FARM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FARM_ToTS" Association="Хранилище TSDBModel.FK_FARM_ToTS">
+            <End Role="TS" EntitySet="TS" />
+            <End Role="FARM" EntitySet="FARM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToFARM" Association="Хранилище TSDBModel.FK_HOSTS_ToFARM">
+            <End Role="FARM" EntitySet="FARM" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToMONITORING" Association="Хранилище TSDBModel.FK_HOSTS_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToTS" Association="Хранилище TSDBModel.FK_HOSTS_ToTS">
+            <End Role="TS" EntitySet="TS" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToUSERS" Association="Хранилище TSDBModel.FK_HOSTS_ToUSERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToHOSTS" Association="Хранилище TSDBModel.FK_MONITORING_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToRULES" Association="Хранилище TSDBModel.FK_MONITORING_ToRULES">
+            <End Role="RULES" EntitySet="RULES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToSERVICES" Association="Хранилище TSDBModel.FK_MONITORING_ToSERVICES">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToTYPES" Association="Хранилище TSDBModel.FK_MONITORING_ToTYPES">
+            <End Role="MONITORING_TYPES" EntitySet="MONITORING_TYPES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NODE_ToHOSTID" Association="Хранилище TSDBModel.FK_NODE_ToHOSTID">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="HOSTS1" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_HISTORY_ToHISTORY" Association="Хранилище TSDBModel.FK_RESOURCES_HISTORY_ToHISTORY">
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+            <End Role="RESOURCES_HISTORY" EntitySet="RESOURCES_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToHOSTS" Association="Хранилище TSDBModel.FK_RESOURCES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToMONITORING" Association="Хранилище TSDBModel.FK_RESOURCES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToRESOURCE_TYPES" Association="Хранилище TSDBModel.FK_RESOURCES_ToRESOURCE_TYPES">
+            <End Role="RESOURCES_TYPES" EntitySet="RESOURCES_TYPES" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToUSERS" Association="Хранилище TSDBModel.FK_RESOURCES_ToUSERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_ToFARM" Association="Хранилище TSDBModel.FK_RULES_ToFARM">
+            <End Role="FARM" EntitySet="FARM" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_ToHOSTS" Association="Хранилище TSDBModel.FK_RULES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_ToMONITORING" Association="Хранилище TSDBModel.FK_RULES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICES_ToHOSTS" Association="Хранилище TSDBModel.FK_SERVICES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICES_ToMONITORING" Association="Хранилище TSDBModel.FK_SERVICES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOCKET_STATUS_ToHOSTS" Association="Хранилище TSDBModel.FK_SOCKET_STATUS_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="SOCKET_STATUS" EntitySet="SOCKET_STATUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOCKET_STATUS_ToRULES" Association="Хранилище TSDBModel.FK_SOCKET_STATUS_ToRULES">
+            <End Role="RULES" EntitySet="RULES" />
+            <End Role="SOCKET_STATUS" EntitySet="SOCKET_STATUS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FARM">
+          <Key>
+            <PropertyRef Name="FARM_ID" />
+          </Key>
+          <Property Name="FARM_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FARM_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="TS_ID" Type="int" />
+          <Property Name="PRODUCT_VERSION" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HOSTS">
+          <Key>
+            <PropertyRef Name="HOST_ID" />
+          </Key>
+          <Property Name="HOST_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NODE_ID" Type="int" />
+          <Property Name="TYPE" Type="char" MaxLength="1" />
+          <Property Name="DNS_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="IP" Type="varchar" MaxLength="15" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
+          <Property Name="TS_ID" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="MONITORING_ID" Type="int" />
+          <Property Name="FARM_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MONITORING">
+          <Key>
+            <PropertyRef Name="MONITORING_ID" />
+          </Key>
+          <Property Name="MONITORING_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VALUE_INT_ALERT" Type="int" />
+          <Property Name="ENABLED" Type="bit" Nullable="false" />
+          <Property Name="LASTCHECKED" Type="datetime" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="STATUS_MESSAGE" Type="nvarchar(max)" />
+          <Property Name="TIMEOUT" Type="int" />
+          <Property Name="VALUE_INT" Type="int" />
+          <Property Name="VALUE_INT_TOTAL" Type="int" />
+          <Property Name="TYPE_ID" Type="int" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="VALUE_TEXT" Type="nvarchar(max)" />
+          <Property Name="RULE_ID" Type="int" />
+          <Property Name="SERVICE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="MONITORING_TYPES">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Name="TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="DATA_TYPE_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESOURCES">
+          <Key>
+            <PropertyRef Name="RESOURCE_ID" />
+          </Key>
+          <Property Name="RESOURCE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RESOURCE_TYPE" Type="int" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="TOTAL" Type="int" />
+          <Property Name="FREE" Type="int" />
+          <Property Name="ERROR_MESSAGE" Type="varchar(max)" />
+          <Property Name="LASTCHECKED" Type="datetime" />
+          <Property Name="MONITOR" Type="bit" Nullable="false" />
+          <Property Name="MONITOR_ALERT_VALUE" Type="int" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="MONITORING_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="RESOURCES_HISTORY">
+          <Key>
+            <PropertyRef Name="RESOURCEH_ID" />
+          </Key>
+          <Property Name="RESOURCE_ID" Type="int" Nullable="false" />
+          <Property Name="RESOURCE_TYPE" Type="int" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="TOTAL" Type="int" />
+          <Property Name="FREE" Type="int" />
+          <Property Name="ERROR_MESSAGE" Type="varchar(max)" />
+          <Property Name="LASTCHECKED" Type="datetime" />
+          <Property Name="MONITOR" Type="bit" Nullable="false" />
+          <Property Name="MONITOR_ALERT_VALUE" Type="int" />
+          <Property Name="USERID" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="RESOURCEH_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="RESOURCES_TYPES">
+          <Key>
+            <PropertyRef Name="RESOURCE_TYPE_ID" />
+          </Key>
+          <Property Name="RESOURCE_TYPE_ID" Type="int" Nullable="false" />
+          <Property Name="RESOURCE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="RESOURCE_DESCRIPTION" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RULES">
+          <Key>
+            <PropertyRef Name="RULE_ID" />
+          </Key>
+          <Property Name="RULE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FARM_ID" Type="int" />
+          <Property Name="RULE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PROBE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="KEEPALIVE" Type="varchar" MaxLength="50" />
+          <Property Name="PORT" Type="int" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="MONITOR" Type="bit" Nullable="false" />
+          <Property Name="MONITOR_ALERT_VALUE" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="MONITORING_ID" Type="int" />
+          <Property Name="SERVICE_ID" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+      предупреждение 6002: В таблице или представлении "C:\USERS\SVKHLOPE\DESKTOP\GOGO\NETINFOCOLLECT\NETINFOCOLLECT\TSDBPASSPORT.MDF.dbo.RULES_HISTORY" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
+        <EntityType Name="RULES_HISTORY">
+          <Key>
+            
+            
+            <PropertyRef Name="RULE_HISTORY_ID" />
+          </Key>
+          <Property Name="RULE_ID" Type="int" Nullable="false" />
+          <Property Name="FARM_ID" Type="int" />
+          <Property Name="RULE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="PROBE_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="KEEPALIVE" Type="varchar" MaxLength="50" />
+          <Property Name="PORT" Type="int" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="S_TIMEOUT" Type="int" />
+          <Property Name="LASTCHECKED" Type="datetime" />
+          <Property Name="S_STATUS" Type="int" />
+          <Property Name="S_STATUS_MESSAGE" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="MONITOR" Type="bit" Nullable="false" />
+          <Property Name="MONITOR_ALERT_VALUE" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="USER_ID" Type="int" />
+          <Property Name="MONITORING_ID" Type="int" />
+          <Property Name="RULE_HISTORY_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="SERVICES">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Name="SERVICE_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SERVICE_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="SERVICE_DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="MONITORING_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="SOCKET_STATUS">
+          <Key>
+            <PropertyRef Name="S_STATUS_ID" />
+          </Key>
+          <Property Name="S_STATUS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="S_STATUS" Type="int" />
+          <Property Name="S_STATUS_MESSAGE" Type="nvarchar(max)" />
+          <Property Name="S_TIMEOUT" Type="int" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="LASTCHECKED" Type="datetime" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="RULE_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="TASK_ID" />
+          </Key>
+          <Property Name="TASK_ID" Type="int" Nullable="false" />
+          <Property Name="HOST_ID" Type="int" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="STARTTIME" Type="datetime" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+          <Property Name="COMMAND" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TS">
+          <Key>
+            <PropertyRef Name="TS_ID" />
+          </Key>
+          <Property Name="TS_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TS_NAME" Type="varchar" MaxLength="50" />
+          <Property Name="TS_DESCRIPTION" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" />
+          <Property Name="FULLNAME" Type="nvarchar(max)" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" />
+          <Property Name="LASTUPDATED" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_FARM_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="FARM" Type="Хранилище TSDBModel.FARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="FARM">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FARM_ToTS">
+          <End Role="TS" Type="Хранилище TSDBModel.TS" Multiplicity="0..1" />
+          <End Role="FARM" Type="Хранилище TSDBModel.FARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TS">
+              <PropertyRef Name="TS_ID" />
+            </Principal>
+            <Dependent Role="FARM">
+              <PropertyRef Name="TS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToFARM">
+          <End Role="FARM" Type="Хранилище TSDBModel.FARM" Multiplicity="1" />
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARM">
+              <PropertyRef Name="FARM_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="FARM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToMONITORING">
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="0..1" />
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToTS">
+          <End Role="TS" Type="Хранилище TSDBModel.TS" Multiplicity="0..1" />
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TS">
+              <PropertyRef Name="TS_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="TS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToUSERS">
+          <End Role="USERS" Type="Хранилище TSDBModel.USERS" Multiplicity="0..1" />
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToRULES">
+          <End Role="RULES" Type="Хранилище TSDBModel.RULES" Multiplicity="0..1" />
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULES">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToSERVICES">
+          <End Role="SERVICES" Type="Хранилище TSDBModel.SERVICES" Multiplicity="0..1" />
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToTYPES">
+          <End Role="MONITORING_TYPES" Type="Хранилище TSDBModel.MONITORING_TYPES" Multiplicity="0..1" />
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING_TYPES">
+              <PropertyRef Name="TYPE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NODE_ToHOSTID">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="HOSTS1" Type="Хранилище TSDBModel.HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="HOSTS1">
+              <PropertyRef Name="NODE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_HISTORY_ToHISTORY">
+          <End Role="RESOURCES" Type="Хранилище TSDBModel.RESOURCES" Multiplicity="1" />
+          <End Role="RESOURCES_HISTORY" Type="Хранилище TSDBModel.RESOURCES_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES_HISTORY">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="RESOURCES" Type="Хранилище TSDBModel.RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToMONITORING">
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="0..1" />
+          <End Role="RESOURCES" Type="Хранилище TSDBModel.RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToRESOURCE_TYPES">
+          <End Role="RESOURCES_TYPES" Type="Хранилище TSDBModel.RESOURCES_TYPES" Multiplicity="0..1" />
+          <End Role="RESOURCES" Type="Хранилище TSDBModel.RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES_TYPES">
+              <PropertyRef Name="RESOURCE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToUSERS">
+          <End Role="USERS" Type="Хранилище TSDBModel.USERS" Multiplicity="0..1" />
+          <End Role="RESOURCES" Type="Хранилище TSDBModel.RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_ToFARM">
+          <End Role="FARM" Type="Хранилище TSDBModel.FARM" Multiplicity="0..1" />
+          <End Role="RULES" Type="Хранилище TSDBModel.RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARM">
+              <PropertyRef Name="FARM_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="FARM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="RULES" Type="Хранилище TSDBModel.RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_ToMONITORING">
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="0..1" />
+          <End Role="RULES" Type="Хранилище TSDBModel.RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICES_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="SERVICES" Type="Хранилище TSDBModel.SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICES_ToMONITORING">
+          <End Role="MONITORING" Type="Хранилище TSDBModel.MONITORING" Multiplicity="0..1" />
+          <End Role="SERVICES" Type="Хранилище TSDBModel.SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOCKET_STATUS_ToHOSTS">
+          <End Role="HOSTS" Type="Хранилище TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="SOCKET_STATUS" Type="Хранилище TSDBModel.SOCKET_STATUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="SOCKET_STATUS">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOCKET_STATUS_ToRULES">
+          <End Role="RULES" Type="Хранилище TSDBModel.RULES" Multiplicity="0..1" />
+          <End Role="SOCKET_STATUS" Type="Хранилище TSDBModel.SOCKET_STATUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULES">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="SOCKET_STATUS">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TSDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TSDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="HOSTS" EntityType="TSDBModel.HOSTS" />
+          <EntitySet Name="RULES" EntityType="TSDBModel.RULES" />
+          <AssociationSet Name="FK_RULES_ToHOSTS" Association="TSDBModel.FK_RULES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <EntitySet Name="FARM" EntityType="TSDBModel.FARM" />
+          <EntitySet Name="TS" EntityType="TSDBModel.TS" />
+          <AssociationSet Name="FK_FARM_ToHOSTS" Association="TSDBModel.FK_FARM_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="FARM" EntitySet="FARM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FARM_ToTS" Association="TSDBModel.FK_FARM_ToTS">
+            <End Role="TS" EntitySet="TS" />
+            <End Role="FARM" EntitySet="FARM" />
+          </AssociationSet>
+          <EntitySet Name="SOCKET_STATUS" EntityType="TSDBModel.SOCKET_STATUS" />
+          <AssociationSet Name="FK_SOCKET_STATUS_ToHOSTS" Association="TSDBModel.FK_SOCKET_STATUS_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="SOCKET_STATUS" EntitySet="SOCKET_STATUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NODE_ToHOSTID" Association="TSDBModel.FK_NODE_ToHOSTID">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="HOSTS1" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SOCKET_STATUS_ToRULES" Association="TSDBModel.FK_SOCKET_STATUS_ToRULES">
+            <End Role="RULES" EntitySet="RULES" />
+            <End Role="SOCKET_STATUS" EntitySet="SOCKET_STATUS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToTS" Association="TSDBModel.FK_HOSTS_ToTS">
+            <End Role="TS" EntitySet="TS" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_ToFARM" Association="TSDBModel.FK_RULES_ToFARM">
+            <End Role="FARM" EntitySet="FARM" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <EntitySet Name="RESOURCES" EntityType="TSDBModel.RESOURCES" />
+          <AssociationSet Name="FK_RESOURCES_ToHOSTS" Association="TSDBModel.FK_RESOURCES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <EntitySet Name="MONITORING" EntityType="TSDBModel.MONITORING" />
+          <EntitySet Name="MONITORING_TYPES" EntityType="TSDBModel.MONITORING_TYPES" />
+          <EntitySet Name="RESOURCES_HISTORY" EntityType="TSDBModel.RESOURCES_HISTORY" />
+          <EntitySet Name="RESOURCES_TYPES" EntityType="TSDBModel.RESOURCES_TYPES" />
+          <EntitySet Name="RULES_HISTORY" EntityType="TSDBModel.RULES_HISTORY" />
+          <EntitySet Name="USERS" EntityType="TSDBModel.USERS" />
+          <AssociationSet Name="FK_HOSTS_ToMONITORING" Association="TSDBModel.FK_HOSTS_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToUSERS" Association="TSDBModel.FK_HOSTS_ToUSERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToHOSTS" Association="TSDBModel.FK_MONITORING_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToTYPES" Association="TSDBModel.FK_MONITORING_ToTYPES">
+            <End Role="MONITORING_TYPES" EntitySet="MONITORING_TYPES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToMONITORING" Association="TSDBModel.FK_RESOURCES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_ToMONITORING" Association="TSDBModel.FK_RULES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="RULES" EntitySet="RULES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_HISTORY_ToHISTORY" Association="TSDBModel.FK_RESOURCES_HISTORY_ToHISTORY">
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+            <End Role="RESOURCES_HISTORY" EntitySet="RESOURCES_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToRESOURCE_TYPES" Association="TSDBModel.FK_RESOURCES_ToRESOURCE_TYPES">
+            <End Role="RESOURCES_TYPES" EntitySet="RESOURCES_TYPES" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RESOURCES_ToUSERS" Association="TSDBModel.FK_RESOURCES_ToUSERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="RESOURCES" EntitySet="RESOURCES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RULES_HISTORY_ToRULES" Association="TSDBModel.FK_RULES_HISTORY_ToRULES">
+            <End Role="RULES" EntitySet="RULES" />
+            <End Role="RULES_HISTORY" EntitySet="RULES_HISTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOSTS_ToFARM" Association="TSDBModel.FK_HOSTS_ToFARM">
+            <End Role="FARM" EntitySet="FARM" />
+            <End Role="HOSTS" EntitySet="HOSTS" />
+          </AssociationSet>
+          <EntitySet Name="SERVICES" EntityType="TSDBModel.SERVICES" />
+          <EntitySet Name="TASKS" EntityType="TSDBModel.TASKS" />
+          <AssociationSet Name="FK_SERVICES_ToHOSTS" Association="TSDBModel.FK_SERVICES_ToHOSTS">
+            <End Role="HOSTS" EntitySet="HOSTS" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SERVICES_ToMONITORING" Association="TSDBModel.FK_SERVICES_ToMONITORING">
+            <End Role="MONITORING" EntitySet="MONITORING" />
+            <End Role="SERVICES" EntitySet="SERVICES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToRULES" Association="TSDBModel.FK_MONITORING_ToRULES">
+            <End Role="RULES" EntitySet="RULES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONITORING_ToSERVICES" Association="TSDBModel.FK_MONITORING_ToSERVICES">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="MONITORING" EntitySet="MONITORING" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="HOSTS">
+          <Key>
+            <PropertyRef Name="HOST_ID" />
+          </Key>
+          <Property Name="HOST_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NODE_ID" Type="Int32" />
+          <Property Name="TYPE" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DNS_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IP" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="RULES" Relationship="TSDBModel.FK_RULES_ToHOSTS" FromRole="HOSTS" ToRole="RULES" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FARM" Relationship="TSDBModel.FK_FARM_ToHOSTS" FromRole="HOSTS" ToRole="FARM" />
+          <NavigationProperty Name="SOCKET_STATUS" Relationship="TSDBModel.FK_SOCKET_STATUS_ToHOSTS" FromRole="HOSTS" ToRole="SOCKET_STATUS" />
+          <NavigationProperty Name="HOSTS1" Relationship="TSDBModel.FK_NODE_ToHOSTID" FromRole="HOSTS" ToRole="HOSTS1" />
+          <NavigationProperty Name="HOSTS2" Relationship="TSDBModel.FK_NODE_ToHOSTID" FromRole="HOSTS1" ToRole="HOSTS" />
+          <Property Type="Int32" Name="TS_ID" />
+          <NavigationProperty Name="TS" Relationship="TSDBModel.FK_HOSTS_ToTS" FromRole="HOSTS" ToRole="TS" />
+          <NavigationProperty Name="RESOURCES" Relationship="TSDBModel.FK_RESOURCES_ToHOSTS" FromRole="HOSTS" ToRole="RESOURCES" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="Int32" Name="USER_ID" />
+          <Property Type="Int32" Name="MONITORING_ID" />
+          <NavigationProperty Name="MONITORING" Relationship="TSDBModel.FK_HOSTS_ToMONITORING" FromRole="HOSTS" ToRole="MONITORING" />
+          <NavigationProperty Name="USERS" Relationship="TSDBModel.FK_HOSTS_ToUSERS" FromRole="HOSTS" ToRole="USERS" />
+          <NavigationProperty Name="MONITORING1" Relationship="TSDBModel.FK_MONITORING_ToHOSTS" FromRole="HOSTS" ToRole="MONITORING" />
+          <Property Type="Int32" Name="FARM_ID" Nullable="false" />
+          <NavigationProperty Name="FARM1" Relationship="TSDBModel.FK_HOSTS_ToFARM" FromRole="HOSTS" ToRole="FARM" />
+          <NavigationProperty Name="SERVICES" Relationship="TSDBModel.FK_SERVICES_ToHOSTS" FromRole="HOSTS" ToRole="SERVICES" />
+        </EntityType>
+        <EntityType Name="RULES">
+          <Key>
+            <PropertyRef Name="RULE_ID" />
+          </Key>
+          <Property Name="RULE_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FARM_ID" Type="Int32" />
+          <Property Name="RULE_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PROBE_NAME" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="KEEPALIVE" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PORT" Type="Int32" />
+          <Property Name="HOST_ID" Type="Int32" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_RULES_ToHOSTS" FromRole="RULES" ToRole="HOSTS" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <NavigationProperty Name="SOCKET_STATUS" Relationship="TSDBModel.FK_SOCKET_STATUS_ToRULES" FromRole="RULES" ToRole="SOCKET_STATUS" />
+          <NavigationProperty Name="FARM" Relationship="TSDBModel.FK_RULES_ToFARM" FromRole="RULES" ToRole="FARM" />
+          <Property Type="Boolean" Name="MONITOR" Nullable="false" />
+          <Property Type="Int32" Name="MONITOR_ALERT_VALUE" />
+          <Property Type="Int32" Name="USER_ID" />
+          <Property Type="Int32" Name="MONITORING_ID" />
+          <NavigationProperty Name="MONITORING" Relationship="TSDBModel.FK_RULES_ToMONITORING" FromRole="RULES" ToRole="MONITORING" />
+          <NavigationProperty Name="RULES_HISTORY" Relationship="TSDBModel.FK_RULES_HISTORY_ToRULES" FromRole="RULES" ToRole="RULES_HISTORY" />
+          <Property Type="Int32" Name="SERVICE_ID" />
+          <NavigationProperty Name="MONITORING1" Relationship="TSDBModel.FK_MONITORING_ToRULES" FromRole="RULES" ToRole="MONITORING" />
+        </EntityType>
+        <Association Name="FK_RULES_ToHOSTS">
+          <End Role="HOSTS" Type="TSDBModel.HOSTS" Multiplicity="0..1" />
+          <End Role="RULES" Type="TSDBModel.RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FARM">
+          <Key>
+            <PropertyRef Name="FARM_ID" />
+          </Key>
+          <Property Type="Int32" Name="FARM_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FARM_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <Property Type="Int32" Name="TS_ID" />
+          <Property Type="String" Name="PRODUCT_VERSION" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_FARM_ToHOSTS" FromRole="FARM" ToRole="HOSTS" />
+          <NavigationProperty Name="TS" Relationship="TSDBModel.FK_FARM_ToTS" FromRole="FARM" ToRole="TS" />
+          <NavigationProperty Name="RULES" Relationship="TSDBModel.FK_RULES_ToFARM" FromRole="FARM" ToRole="RULES" />
+          <NavigationProperty Name="HOSTS1" Relationship="TSDBModel.FK_HOSTS_ToFARM" FromRole="FARM" ToRole="HOSTS" />
+        </EntityType>
+        <EntityType Name="TS">
+          <Key>
+            <PropertyRef Name="TS_ID" />
+          </Key>
+          <Property Type="Int32" Name="TS_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="TS_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TS_DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FARM" Relationship="TSDBModel.FK_FARM_ToTS" FromRole="TS" ToRole="FARM" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_HOSTS_ToTS" FromRole="TS" ToRole="HOSTS" />
+        </EntityType>
+        <Association Name="FK_FARM_ToHOSTS">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.FARM" Role="FARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="FARM">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FARM_ToTS">
+          <End Type="TSDBModel.TS" Role="TS" Multiplicity="0..1" />
+          <End Type="TSDBModel.FARM" Role="FARM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TS">
+              <PropertyRef Name="TS_ID" />
+            </Principal>
+            <Dependent Role="FARM">
+              <PropertyRef Name="TS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SOCKET_STATUS">
+          <Key>
+            <PropertyRef Name="S_STATUS_ID" />
+          </Key>
+          <Property Type="Int32" Name="S_STATUS_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="S_STATUS" />
+          <Property Type="String" Name="S_STATUS_MESSAGE" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="DateTime" Name="LASTCHECKED" Precision="3" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_SOCKET_STATUS_ToHOSTS" FromRole="SOCKET_STATUS" ToRole="HOSTS" />
+          <Property Type="Int32" Name="S_TIMEOUT" />
+          <Property Type="Int32" Name="RULE_ID" />
+          <NavigationProperty Name="RULES" Relationship="TSDBModel.FK_SOCKET_STATUS_ToRULES" FromRole="SOCKET_STATUS" ToRole="RULES" />
+        </EntityType>
+        <Association Name="FK_SOCKET_STATUS_ToHOSTS">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.SOCKET_STATUS" Role="SOCKET_STATUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="SOCKET_STATUS">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NODE_ToHOSTID">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.HOSTS" Role="HOSTS1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="HOSTS1">
+              <PropertyRef Name="NODE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SOCKET_STATUS_ToRULES">
+          <End Type="TSDBModel.RULES" Role="RULES" Multiplicity="0..1" />
+          <End Type="TSDBModel.SOCKET_STATUS" Role="SOCKET_STATUS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULES">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="SOCKET_STATUS">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToTS">
+          <End Type="TSDBModel.TS" Role="TS" Multiplicity="0..1" />
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TS">
+              <PropertyRef Name="TS_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="TS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_ToFARM">
+          <End Type="TSDBModel.FARM" Role="FARM" Multiplicity="0..1" />
+          <End Type="TSDBModel.RULES" Role="RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARM">
+              <PropertyRef Name="FARM_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="FARM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RESOURCES">
+          <Key>
+            <PropertyRef Name="RESOURCE_ID" />
+          </Key>
+          <Property Type="Int32" Name="RESOURCE_ID" Nullable="false" />
+          <Property Type="Int32" Name="RESOURCE_TYPE" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <Property Type="Int32" Name="TOTAL" />
+          <Property Type="Int32" Name="FREE" />
+          <Property Type="String" Name="ERROR_MESSAGE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_RESOURCES_ToHOSTS" FromRole="RESOURCES" ToRole="HOSTS" />
+          <Property Type="DateTime" Name="LASTCHECKED" Precision="3" />
+          <Property Type="Boolean" Name="MONITOR" Nullable="false" />
+          <Property Type="Int32" Name="MONITOR_ALERT_VALUE" />
+          <Property Type="Int32" Name="USER_ID" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="Int32" Name="MONITORING_ID" />
+          <NavigationProperty Name="MONITORING" Relationship="TSDBModel.FK_RESOURCES_ToMONITORING" FromRole="RESOURCES" ToRole="MONITORING" />
+          <NavigationProperty Name="RESOURCES_HISTORY" Relationship="TSDBModel.FK_RESOURCES_HISTORY_ToHISTORY" FromRole="RESOURCES" ToRole="RESOURCES_HISTORY" />
+          <NavigationProperty Name="RESOURCES_TYPES" Relationship="TSDBModel.FK_RESOURCES_ToRESOURCE_TYPES" FromRole="RESOURCES" ToRole="RESOURCES_TYPES" />
+          <NavigationProperty Name="USERS" Relationship="TSDBModel.FK_RESOURCES_ToUSERS" FromRole="RESOURCES" ToRole="USERS" />
+        </EntityType>
+        <Association Name="FK_RESOURCES_ToHOSTS">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.RESOURCES" Role="RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MONITORING">
+          <Key>
+            <PropertyRef Name="MONITORING_ID" />
+          </Key>
+          <Property Type="Int32" Name="MONITORING_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="ENABLED" Nullable="false" />
+          <Property Type="DateTime" Name="LASTCHECKED" Precision="3" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="Int32" Name="USER_ID" />
+          <Property Type="Int32" Name="STATUS" />
+          <Property Type="String" Name="STATUS_MESSAGE" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TIMEOUT" />
+          <Property Type="Int32" Name="TYPE_ID" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_HOSTS_ToMONITORING" FromRole="MONITORING" ToRole="HOSTS" />
+          <NavigationProperty Name="HOSTS1" Relationship="TSDBModel.FK_MONITORING_ToHOSTS" FromRole="MONITORING" ToRole="HOSTS" />
+          <NavigationProperty Name="MONITORING_TYPES" Relationship="TSDBModel.FK_MONITORING_ToTYPES" FromRole="MONITORING" ToRole="MONITORING_TYPES" />
+          <NavigationProperty Name="RESOURCES" Relationship="TSDBModel.FK_RESOURCES_ToMONITORING" FromRole="MONITORING" ToRole="RESOURCES" />
+          <NavigationProperty Name="RULES" Relationship="TSDBModel.FK_RULES_ToMONITORING" FromRole="MONITORING" ToRole="RULES" />
+          <Property Type="Int32" Name="VALUE_INT_ALERT" />
+          <Property Type="Int32" Name="VALUE_INT" />
+          <Property Type="Int32" Name="VALUE_INT_TOTAL" />
+          <Property Type="String" Name="VALUE_TEXT" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RULE_ID" />
+          <NavigationProperty Name="SERVICES" Relationship="TSDBModel.FK_SERVICES_ToMONITORING" FromRole="MONITORING" ToRole="SERVICES" />
+          <Property Type="Int32" Name="SERVICE_ID" />
+          <NavigationProperty Name="RULES1" Relationship="TSDBModel.FK_MONITORING_ToRULES" FromRole="MONITORING" ToRole="RULES" />
+          <NavigationProperty Name="SERVICES1" Relationship="TSDBModel.FK_MONITORING_ToSERVICES" FromRole="MONITORING" ToRole="SERVICES" />
+        </EntityType>
+        <EntityType Name="MONITORING_TYPES">
+          <Key>
+            <PropertyRef Name="TYPE_ID" />
+          </Key>
+          <Property Type="Int32" Name="TYPE_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MONITORING" Relationship="TSDBModel.FK_MONITORING_ToTYPES" FromRole="MONITORING_TYPES" ToRole="MONITORING" />
+          <Property Type="Int32" Name="DATA_TYPE_ID" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RESOURCES_HISTORY">
+          <Key>
+            <PropertyRef Name="RESOURCEH_ID" />
+          </Key>
+          <Property Type="Int32" Name="RESOURCE_ID" Nullable="false" />
+          <Property Type="Int32" Name="RESOURCE_TYPE" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <Property Type="Int32" Name="TOTAL" />
+          <Property Type="Int32" Name="FREE" />
+          <Property Type="String" Name="ERROR_MESSAGE" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LASTCHECKED" Precision="3" />
+          <Property Type="Boolean" Name="MONITOR" Nullable="false" />
+          <Property Type="Int32" Name="MONITOR_ALERT_VALUE" />
+          <Property Type="Int32" Name="USERID" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="Int32" Name="RESOURCEH_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RESOURCES" Relationship="TSDBModel.FK_RESOURCES_HISTORY_ToHISTORY" FromRole="RESOURCES_HISTORY" ToRole="RESOURCES" />
+        </EntityType>
+        <EntityType Name="RESOURCES_TYPES">
+          <Key>
+            <PropertyRef Name="RESOURCE_TYPE_ID" />
+          </Key>
+          <Property Type="Int32" Name="RESOURCE_TYPE_ID" Nullable="false" />
+          <Property Type="String" Name="RESOURCE_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RESOURCE_DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RESOURCES" Relationship="TSDBModel.FK_RESOURCES_ToRESOURCE_TYPES" FromRole="RESOURCES_TYPES" ToRole="RESOURCES" />
+        </EntityType>
+        <EntityType Name="RULES_HISTORY">
+          <Key>
+            <PropertyRef Name="RULE_HISTORY_ID" />
+          </Key>
+          <Property Type="Int32" Name="RULE_ID" Nullable="false" />
+          <Property Type="Int32" Name="FARM_ID" />
+          <Property Type="String" Name="RULE_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PROBE_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="KEEPALIVE" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PORT" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <Property Type="Int32" Name="S_TIMEOUT" />
+          <Property Type="DateTime" Name="LASTCHECKED" Precision="3" />
+          <Property Type="Int32" Name="S_STATUS" />
+          <Property Type="String" Name="S_STATUS_MESSAGE" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="MONITOR" Nullable="false" />
+          <Property Type="Int32" Name="MONITOR_ALERT_VALUE" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="Int32" Name="USER_ID" />
+          <NavigationProperty Name="RULES" Relationship="TSDBModel.FK_RULES_HISTORY_ToRULES" FromRole="RULES_HISTORY" ToRole="RULES" />
+          <Property Type="Int32" Name="MONITORING_ID" />
+          <Property Type="Int32" Name="RULE_HISTORY_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="USERNAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FULLNAME" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_HOSTS_ToUSERS" FromRole="USERS" ToRole="HOSTS" />
+          <NavigationProperty Name="RESOURCES" Relationship="TSDBModel.FK_RESOURCES_ToUSERS" FromRole="USERS" ToRole="RESOURCES" />
+        </EntityType>
+        <Association Name="FK_HOSTS_ToMONITORING">
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="0..1" />
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToUSERS">
+          <End Type="TSDBModel.USERS" Role="USERS" Multiplicity="0..1" />
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToHOSTS">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToTYPES">
+          <End Type="TSDBModel.MONITORING_TYPES" Role="MONITORING_TYPES" Multiplicity="0..1" />
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING_TYPES">
+              <PropertyRef Name="TYPE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToMONITORING">
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="0..1" />
+          <End Type="TSDBModel.RESOURCES" Role="RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_ToMONITORING">
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="0..1" />
+          <End Type="TSDBModel.RULES" Role="RULES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="RULES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_HISTORY_ToHISTORY">
+          <End Type="TSDBModel.RESOURCES" Role="RESOURCES" Multiplicity="1" />
+          <End Type="TSDBModel.RESOURCES_HISTORY" Role="RESOURCES_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES_HISTORY">
+              <PropertyRef Name="RESOURCE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToRESOURCE_TYPES">
+          <End Type="TSDBModel.RESOURCES_TYPES" Role="RESOURCES_TYPES" Multiplicity="0..1" />
+          <End Type="TSDBModel.RESOURCES" Role="RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RESOURCES_TYPES">
+              <PropertyRef Name="RESOURCE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="RESOURCE_TYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RESOURCES_ToUSERS">
+          <End Type="TSDBModel.USERS" Role="USERS" Multiplicity="0..1" />
+          <End Type="TSDBModel.RESOURCES" Role="RESOURCES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="RESOURCES">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RULES_HISTORY_ToRULES">
+          <End Type="TSDBModel.RULES" Role="RULES" Multiplicity="1" />
+          <End Type="TSDBModel.RULES_HISTORY" Role="RULES_HISTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULES">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="RULES_HISTORY">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOSTS_ToFARM">
+          <End Type="TSDBModel.FARM" Role="FARM" Multiplicity="1" />
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FARM">
+              <PropertyRef Name="FARM_ID" />
+            </Principal>
+            <Dependent Role="HOSTS">
+              <PropertyRef Name="FARM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SERVICES">
+          <Key>
+            <PropertyRef Name="SERVICE_ID" />
+          </Key>
+          <Property Type="Int32" Name="SERVICE_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SERVICE_NAME" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SERVICE_DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MONITORING_ID" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <NavigationProperty Name="HOSTS" Relationship="TSDBModel.FK_SERVICES_ToHOSTS" FromRole="SERVICES" ToRole="HOSTS" />
+          <NavigationProperty Name="MONITORING" Relationship="TSDBModel.FK_SERVICES_ToMONITORING" FromRole="SERVICES" ToRole="MONITORING" />
+          <NavigationProperty Name="MONITORING1" Relationship="TSDBModel.FK_MONITORING_ToSERVICES" FromRole="SERVICES" ToRole="MONITORING" />
+        </EntityType>
+        <EntityType Name="TASKS">
+          <Key>
+            <PropertyRef Name="TASK_ID" />
+          </Key>
+          <Property Type="Int32" Name="TASK_ID" Nullable="false" />
+          <Property Type="Int32" Name="HOST_ID" />
+          <Property Type="String" Name="NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="STARTTIME" Precision="3" />
+          <Property Type="DateTime" Name="LASTUPDATED" Precision="3" />
+          <Property Type="String" Name="COMMAND" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_SERVICES_ToHOSTS">
+          <End Type="TSDBModel.HOSTS" Role="HOSTS" Multiplicity="0..1" />
+          <End Type="TSDBModel.SERVICES" Role="SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOSTS">
+              <PropertyRef Name="HOST_ID" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="HOST_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SERVICES_ToMONITORING">
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="0..1" />
+          <End Type="TSDBModel.SERVICES" Role="SERVICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONITORING">
+              <PropertyRef Name="MONITORING_ID" />
+            </Principal>
+            <Dependent Role="SERVICES">
+              <PropertyRef Name="MONITORING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToRULES">
+          <End Type="TSDBModel.RULES" Role="RULES" Multiplicity="0..1" />
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RULES">
+              <PropertyRef Name="RULE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="RULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONITORING_ToSERVICES">
+          <End Type="TSDBModel.SERVICES" Role="SERVICES" Multiplicity="0..1" />
+          <End Type="TSDBModel.MONITORING" Role="MONITORING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="SERVICE_ID" />
+            </Principal>
+            <Dependent Role="MONITORING">
+              <PropertyRef Name="SERVICE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TSDBModelContainer" CdmEntityContainer="TSDBEntities">
+          <EntitySetMapping Name="HOSTS">
+            <EntityTypeMapping TypeName="TSDBModel.HOSTS">
+              <MappingFragment StoreEntitySet="HOSTS">
+                <ScalarProperty Name="FARM_ID" ColumnName="FARM_ID" />
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="TS_ID" ColumnName="TS_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="NODE_ID" ColumnName="NODE_ID" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="DNS_NAME" ColumnName="DNS_NAME" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RULES">
+            <EntityTypeMapping TypeName="TSDBModel.RULES">
+              <MappingFragment StoreEntitySet="RULES">
+                <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="MONITOR_ALERT_VALUE" ColumnName="MONITOR_ALERT_VALUE" />
+                <ScalarProperty Name="MONITOR" ColumnName="MONITOR" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+                <ScalarProperty Name="FARM_ID" ColumnName="FARM_ID" />
+                <ScalarProperty Name="RULE_NAME" ColumnName="RULE_NAME" />
+                <ScalarProperty Name="PROBE_NAME" ColumnName="PROBE_NAME" />
+                <ScalarProperty Name="KEEPALIVE" ColumnName="KEEPALIVE" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FARM">
+            <EntityTypeMapping TypeName="TSDBModel.FARM">
+              <MappingFragment StoreEntitySet="FARM">
+                <ScalarProperty Name="PRODUCT_VERSION" ColumnName="PRODUCT_VERSION" />
+                <ScalarProperty Name="TS_ID" ColumnName="TS_ID" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="FARM_NAME" ColumnName="FARM_NAME" />
+                <ScalarProperty Name="FARM_ID" ColumnName="FARM_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TS">
+            <EntityTypeMapping TypeName="TSDBModel.TS">
+              <MappingFragment StoreEntitySet="TS">
+                <ScalarProperty Name="TS_DESCRIPTION" ColumnName="TS_DESCRIPTION" />
+                <ScalarProperty Name="TS_NAME" ColumnName="TS_NAME" />
+                <ScalarProperty Name="TS_ID" ColumnName="TS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOCKET_STATUS">
+            <EntityTypeMapping TypeName="TSDBModel.SOCKET_STATUS">
+              <MappingFragment StoreEntitySet="SOCKET_STATUS">
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+                <ScalarProperty Name="S_TIMEOUT" ColumnName="S_TIMEOUT" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="LASTCHECKED" ColumnName="LASTCHECKED" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="S_STATUS_MESSAGE" ColumnName="S_STATUS_MESSAGE" />
+                <ScalarProperty Name="S_STATUS" ColumnName="S_STATUS" />
+                <ScalarProperty Name="S_STATUS_ID" ColumnName="S_STATUS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESOURCES">
+            <EntityTypeMapping TypeName="TSDBModel.RESOURCES">
+              <MappingFragment StoreEntitySet="RESOURCES">
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="MONITOR_ALERT_VALUE" ColumnName="MONITOR_ALERT_VALUE" />
+                <ScalarProperty Name="MONITOR" ColumnName="MONITOR" />
+                <ScalarProperty Name="LASTCHECKED" ColumnName="LASTCHECKED" />
+                <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+                <ScalarProperty Name="FREE" ColumnName="FREE" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="RESOURCE_TYPE" ColumnName="RESOURCE_TYPE" />
+                <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONITORING">
+            <EntityTypeMapping TypeName="TSDBModel.MONITORING">
+              <MappingFragment StoreEntitySet="MONITORING">
+                <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+                <ScalarProperty Name="VALUE_TEXT" ColumnName="VALUE_TEXT" />
+                <ScalarProperty Name="VALUE_INT_TOTAL" ColumnName="VALUE_INT_TOTAL" />
+                <ScalarProperty Name="VALUE_INT" ColumnName="VALUE_INT" />
+                <ScalarProperty Name="VALUE_INT_ALERT" ColumnName="VALUE_INT_ALERT" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="TIMEOUT" ColumnName="TIMEOUT" />
+                <ScalarProperty Name="STATUS_MESSAGE" ColumnName="STATUS_MESSAGE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="LASTCHECKED" ColumnName="LASTCHECKED" />
+                <ScalarProperty Name="ENABLED" ColumnName="ENABLED" />
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONITORING_TYPES">
+            <EntityTypeMapping TypeName="TSDBModel.MONITORING_TYPES">
+              <MappingFragment StoreEntitySet="MONITORING_TYPES">
+                <ScalarProperty Name="DATA_TYPE_ID" ColumnName="DATA_TYPE_ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESOURCES_HISTORY">
+            <EntityTypeMapping TypeName="TSDBModel.RESOURCES_HISTORY">
+              <MappingFragment StoreEntitySet="RESOURCES_HISTORY">
+                <ScalarProperty Name="RESOURCEH_ID" ColumnName="RESOURCEH_ID" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="MONITOR_ALERT_VALUE" ColumnName="MONITOR_ALERT_VALUE" />
+                <ScalarProperty Name="MONITOR" ColumnName="MONITOR" />
+                <ScalarProperty Name="LASTCHECKED" ColumnName="LASTCHECKED" />
+                <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+                <ScalarProperty Name="FREE" ColumnName="FREE" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="RESOURCE_TYPE" ColumnName="RESOURCE_TYPE" />
+                <ScalarProperty Name="RESOURCE_ID" ColumnName="RESOURCE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RESOURCES_TYPES">
+            <EntityTypeMapping TypeName="TSDBModel.RESOURCES_TYPES">
+              <MappingFragment StoreEntitySet="RESOURCES_TYPES">
+                <ScalarProperty Name="RESOURCE_DESCRIPTION" ColumnName="RESOURCE_DESCRIPTION" />
+                <ScalarProperty Name="RESOURCE_NAME" ColumnName="RESOURCE_NAME" />
+                <ScalarProperty Name="RESOURCE_TYPE_ID" ColumnName="RESOURCE_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RULES_HISTORY">
+            <EntityTypeMapping TypeName="TSDBModel.RULES_HISTORY">
+              <MappingFragment StoreEntitySet="RULES_HISTORY">
+                <ScalarProperty Name="RULE_HISTORY_ID" ColumnName="RULE_HISTORY_ID" />
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="MONITOR_ALERT_VALUE" ColumnName="MONITOR_ALERT_VALUE" />
+                <ScalarProperty Name="MONITOR" ColumnName="MONITOR" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="S_STATUS_MESSAGE" ColumnName="S_STATUS_MESSAGE" />
+                <ScalarProperty Name="S_STATUS" ColumnName="S_STATUS" />
+                <ScalarProperty Name="LASTCHECKED" ColumnName="LASTCHECKED" />
+                <ScalarProperty Name="S_TIMEOUT" ColumnName="S_TIMEOUT" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="KEEPALIVE" ColumnName="KEEPALIVE" />
+                <ScalarProperty Name="PROBE_NAME" ColumnName="PROBE_NAME" />
+                <ScalarProperty Name="RULE_NAME" ColumnName="RULE_NAME" />
+                <ScalarProperty Name="FARM_ID" ColumnName="FARM_ID" />
+                <ScalarProperty Name="RULE_ID" ColumnName="RULE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="TSDBModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICES">
+            <EntityTypeMapping TypeName="TSDBModel.SERVICES">
+              <MappingFragment StoreEntitySet="SERVICES">
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="MONITORING_ID" ColumnName="MONITORING_ID" />
+                <ScalarProperty Name="SERVICE_DESCRIPTION" ColumnName="SERVICE_DESCRIPTION" />
+                <ScalarProperty Name="SERVICE_NAME" ColumnName="SERVICE_NAME" />
+                <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TASKS">
+            <EntityTypeMapping TypeName="TSDBModel.TASKS">
+              <MappingFragment StoreEntitySet="TASKS">
+                <ScalarProperty Name="COMMAND" ColumnName="COMMAND" />
+                <ScalarProperty Name="LASTUPDATED" ColumnName="LASTUPDATED" />
+                <ScalarProperty Name="STARTTIME" ColumnName="STARTTIME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="HOST_ID" ColumnName="HOST_ID" />
+                <ScalarProperty Name="TASK_ID" ColumnName="TASK_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

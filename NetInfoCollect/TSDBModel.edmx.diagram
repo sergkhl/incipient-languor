@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb0e95eb477c4d028b605f460f9e991e" Name="Диаграмма1" ZoomLevel="71">
+        <EntityTypeShape EntityType="TSDBModel.HOSTS" Width="1.5" PointX="0.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TSDBModel.RULES" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TSDBModel.FK_RULES_ToHOSTS" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TSDBModel.FARM" Width="1.5" PointX="5.875" PointY="4.5" />
+        <EntityTypeShape EntityType="TSDBModel.TS" Width="1.5" PointX="5.75" PointY="1.875" />
+        <AssociationConnector Association="TSDBModel.FK_FARM_ToHOSTS" />
+        <AssociationConnector Association="TSDBModel.FK_FARM_ToTS" />
+        <EntityTypeShape EntityType="TSDBModel.SOCKET_STATUS" Width="1.5" PointX="11.25" PointY="6.375" />
+        <AssociationConnector Association="TSDBModel.FK_SOCKET_STATUS_ToHOSTS" />
+        <AssociationConnector Association="TSDBModel.FK_NODE_ToHOSTID" />
+        <AssociationConnector Association="TSDBModel.FK_SOCKET_STATUS_ToRULES" />
+        <AssociationConnector Association="TSDBModel.FK_HOSTS_ToTS" />
+        <AssociationConnector Association="TSDBModel.FK_RULES_ToFARM" />
+        <EntityTypeShape EntityType="TSDBModel.RESOURCES" Width="1.5" PointX="7.75" PointY="1.375" />
+        <AssociationConnector Association="TSDBModel.FK_RESOURCES_ToHOSTS" />
+        <EntityTypeShape EntityType="TSDBModel.MONITORING" Width="1.5" PointX="2.625" PointY="9.25" />
+        <EntityTypeShape EntityType="TSDBModel.MONITORING_TYPES" Width="1.5" PointX="5.18204325865118" PointY="28.310251204441418" />
+        <EntityTypeShape EntityType="TSDBModel.RESOURCES_HISTORY" Width="1.5" PointX="1.7232128371127009" PointY="15.412835277343557" />
+        <EntityTypeShape EntityType="TSDBModel.RESOURCES_TYPES" Width="1.5" PointX="9.5122854642161574" PointY="22.545022662051498" />
+        <EntityTypeShape EntityType="TSDBModel.RULES_HISTORY" Width="1.5" PointX="8.580693872915905" PointY="3.6501916514943313" />
+        <EntityTypeShape EntityType="TSDBModel.USERS" Width="1.5" PointX="9.4455906550612259" PointY="28.321830479578036" />
+        <AssociationConnector Association="TSDBModel.FK_HOSTS_ToMONITORING" />
+        <AssociationConnector Association="TSDBModel.FK_HOSTS_ToUSERS" />
+        <AssociationConnector Association="TSDBModel.FK_MONITORING_ToHOSTS" />
+        <AssociationConnector Association="TSDBModel.FK_MONITORING_ToTYPES" />
+        <AssociationConnector Association="TSDBModel.FK_RESOURCES_ToMONITORING" />
+        <AssociationConnector Association="TSDBModel.FK_RULES_ToMONITORING" />
+        <AssociationConnector Association="TSDBModel.FK_RESOURCES_HISTORY_ToHISTORY" />
+        <AssociationConnector Association="TSDBModel.FK_RESOURCES_ToRESOURCE_TYPES" />
+        <AssociationConnector Association="TSDBModel.FK_RESOURCES_ToUSERS" />
+        <AssociationConnector Association="TSDBModel.FK_RULES_HISTORY_ToRULES" />
+        <AssociationConnector Association="TSDBModel.FK_HOSTS_ToFARM" />
+        <EntityTypeShape EntityType="TSDBModel.SERVICES" Width="1.5" PointX="11.983086945481173" PointY="9.56698099224222" />
+        <EntityTypeShape EntityType="TSDBModel.TASKS" Width="1.5" PointX="6.625" PointY="8.25" />
+        <AssociationConnector Association="TSDBModel.FK_SERVICES_ToHOSTS" />
+        <AssociationConnector Association="TSDBModel.FK_SERVICES_ToMONITORING" />
+        <AssociationConnector Association="TSDBModel.FK_MONITORING_ToRULES" />
+        <AssociationConnector Association="TSDBModel.FK_MONITORING_ToSERVICES" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
